@@ -6,13 +6,13 @@ const Home = () => {
 
   const addTask = (event) => {
     if (event.key === "Enter" && task.trim() !== "") {
-      setTaskList([...taskList, task]);
+      setTaskList([...taskList, task]); 
       setTask("");
     }
   };
 
   const deleteTask = (indexToDelete) => {
-    setTaskList(taskList.filter((_ , index) => index !== indexToDelete));
+    setTaskList(taskList.filter((_, index) => index !== indexToDelete));
   };
 
   return (
@@ -30,20 +30,24 @@ const Home = () => {
             onKeyDown={addTask}
           />
           <ul className="list-group list-group-flush">
-            {taskList.map((taskToDo, index) => (
-             <li
-  key={index}
-  className="list-group-item d-flex justify-content-between align-items-center task-item fs-4"
->
-  <span className="flex-grow-1">{taskToDo}</span>
-  <button
-    className="btn btn-sm btn-outline-danger delete-btn ms-3"
-    onClick={() => deleteTask(index)}
-  >
-✖</button>
-</li>
-
-            ))}
+            {taskList.length === 0 ? (
+              <li className="list-group-item text-center text-muted">No tasks, add a task</li>
+            ) : (
+              taskList.map((taskToDo, index) => (
+                <li
+                  key={index}
+                  className="list-group-item d-flex justify-content-between align-items-center task-item fs-4"
+                >
+                  <span className="flex-grow-1">{taskToDo}</span>
+                  <button
+                    className="btn btn-sm btn-outline-danger delete-btn ms-3"
+                    onClick={() => deleteTask(index)}
+                  >
+                    ✖
+                  </button>
+                </li>
+              ))
+            )}
           </ul>
           <div className="text-muted px-3 py-2 small">
             {taskList.length} item{taskList.length !== 1 ? "s" : ""} left
