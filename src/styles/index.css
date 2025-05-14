@@ -1,19 +1,13 @@
-/* Oculta la X por defecto */
 .delete-btn {
   display: none;
 }
 
-/* Muestra la X al pasar el mouse */
 .task-item:hover .delete-btn {
   display: inline-block;
 }
 
-/* Estilo suave del input */
-input.form-control::placeholder {
-  color: #e6e6e6;
-}
 .task-item {
-  word-break: break-word; /* Fuerza salto de línea si es necesario */
+  word-break: break-word;
   overflow-wrap: break-word;
   white-space: normal;
 }
